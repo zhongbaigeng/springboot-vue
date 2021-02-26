@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sun.mapper.BookMapper">
+    <select id="findAll" resultType="com.sun.entity.Book">
+        select * from book
+    </select>
+
+    <select id="getBookById" resultType="com.sun.entity.Book" parameterType="int">
+        select * from book where id=#{id}
+    </select>
+
+    <select id="getBookByName" parameterType="string" resultType="com.sun.entity.Book">
+        select * from book where name=#{name}
+    </select>
+
+    <delete id="delBookById" parameterType="int">
+        delete from book where id=#{id}
+    </delete>
+
+    <update id="updBook" parameterType="com.sun.entity.Book">
+        update book
+        set name=#{name},author=#{author},publish=#{publish},pages=#{pages},
+        price=#{price},bookcaseid=#{bookcaseid},abled=#{abled}
+        where id=#{id}
+    </update>
+
+    <insert id="insertBook" parameterType="com.sun.entity.Book">
+        insert into book
+        values
+        (#{id},#{name},#{author},#{publish},#{pages},#{price},#{bookcaseid},#{abled})
+    </insert>
+</mapper>
